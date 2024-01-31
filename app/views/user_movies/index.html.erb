@@ -1,0 +1,16 @@
+
+
+<% if @top_rated %>
+  <% @top_rated.each do |movie| %>
+    <p> Movie Title: <%= link_to movie[:title], "/users/#{@user.id}/movies/#{movie[:id]}" %> </p>
+    <p> Rating: <%=  movie[:vote_average] %> </p> <br>
+  <% end %>
+<% elsif @search_results %>  
+ <%  @search_results.each do |movie| %>
+    <p> Movie Title: <%= link_to movie[:title], "/users/#{@user.id}/movies/#{movie[:id]}" %> </p>
+    <p> Rating: <%=  movie[:vote_average] %> </p> <br>
+  <% end %>
+<% end %>
+
+
+<%= link_to "Discover Page", "/users/#{@user.id}/discover" %>

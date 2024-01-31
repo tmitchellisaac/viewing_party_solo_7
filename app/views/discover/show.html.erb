@@ -3,6 +3,6 @@
 
 <%= form_with url: "/users/#{@user.id}/movies", method: :get, data: {turbo: false} do |form| %>
   <%= form.label "Search for Movies:"  %>
-  <%= form.text_field :q %>
+  <%= form.text_field :s %>
   <%= form.submit "Search" %>
 <% end %>

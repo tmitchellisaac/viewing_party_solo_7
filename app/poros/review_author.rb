@@ -1,4 +1,5 @@
 class ReviewAuthor 
+  attr_reader :name, :username, :avatar_path, :rating
   def initialize(data)
     @name = data[:name]
     @username = data[:username]

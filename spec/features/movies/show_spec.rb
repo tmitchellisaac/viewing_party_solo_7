@@ -45,13 +45,18 @@ RSpec.describe 'Movies show page', type: :feature do
     expect(page).to have_content("Discover Page")
     expect(page).to have_content("Create Viewing Party")
 
+    expect(page).to have_content(7.103)
+    expect(page).to have_content("2 hours and 11 minutes")
+    expect(page).to have_content("Drama Comedy Thriller")
+    expect(page).to have_content("Struggling to find his place at Oxford University, student Oliver Quick finds himself drawn into the world of the charming and aristocratic Felix Catton, who invites him to Saltburn, his eccentric family's sprawling estate, for a summer never to be forgotten.")
+    expect(page).to have_content("Oliver Quick played by Barry Keoghan")
+    expect(page).to have_content("Annabel played by Sadie Soverall")
+    expect(page).to_not have_content("Richard Cotterell")
+    expect(page).to have_content(8)
+    expect(page).to have_content("Brent Marchant")
+    expect(page).to have_content("Brent_Marchant")
+    expect(page).to have_content(3.0)
   end
 
-  xit "has attribute/info about movie" do
-    visit "/users/#{@user_1.id}/movies/#{@movie_1.id}"
-
-
-
-  end
 
 end

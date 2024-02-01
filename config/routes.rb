@@ -8,13 +8,10 @@ Rails.application.routes.draw do
   get '/register', to: 'users#new', as: 'register_user'
 
   resources :users, only: [:show, :create] do
-    #  member do
-    #    get '/discover', to: "discover#show"
-    #  end
-    # resources :discover
     get "/discover", to: "discover#show"
-    resources :movies, controller:'user_movies'
-
+    resources :movies, controller:'user_movies' do
+      resources :viewing_party, controller: "viewing_party"
+    end
   end
 
 # get "/discover", to: "discover#show"

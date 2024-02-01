@@ -1,6 +1,6 @@
 class Movie 
   attr_reader :id,
-              :name,
+              :title,
               :rating,
               :runtime,
               :genres,
@@ -13,9 +13,9 @@ class Movie
     @id = data1[:id]
     @title = data1[:title]
     @rating = data1[:vote_average]
-    @runtime = data1[:runtime]
+    @runtime = "#{data1[:runtime]/60} hours and #{data1[:runtime] % 60} minutes"
     @genres = data1[:genres].map { |line| line[:name] }
-    @decription = data1[:overview]
+    @description = data1[:overview]
     @cast =  {} 
       data2[:cast].take(10).map do |member| 
          @cast[member[:name]] = member[:character] 

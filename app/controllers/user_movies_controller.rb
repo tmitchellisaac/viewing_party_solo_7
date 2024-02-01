@@ -1,6 +1,9 @@
 class UserMoviesController < ApplicationController
 
   def index
+
+
+
     @user = User.find(params[:user_id])
 
     conn = Faraday.new(url: "https://api.themoviedb.org") do |faraday|
@@ -28,6 +31,7 @@ class UserMoviesController < ApplicationController
       faraday.params["api_key"] = Rails.application.credentials.the_movie_db[:key]
     end
 
+
     response_gen = conn.get("3/movie/#{id}")
     response_credits = conn.get("3/movie/#{id}/credits")
     response_reviews = conn.get("3/movie/#{id}/reviews")
@@ -36,8 +40,6 @@ class UserMoviesController < ApplicationController
     data2 = JSON.parse(response_credits.body, symbolize_names: true)
     data3 = JSON.parse(response_reviews.body, symbolize_names: true)
 
-
     @movie = Movie.new(data1, data2, data3)
-
   end
 end

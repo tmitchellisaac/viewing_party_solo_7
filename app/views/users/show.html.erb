@@ -3,7 +3,7 @@
 <section class="viewing_parties">
   <% @user.viewing_parties.each do |party| %>
     <div class="viewing_party">
-        Movie: <%= party.movie_title %> <br>
+        <h1><%= party.movie_title %> </h1> <br>
          Party Time: <%= party.date %> at <%= party.start_time %><br>
          Host: <%= party.find_host.name %><br>
          Who's Coming? <br/>

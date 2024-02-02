@@ -57,16 +57,13 @@ RSpec.describe 'Viewing Party Create Page', type: :feature do
 
     us_p_1 = UserParty.all.first
     us_p_2 = UserParty.all.second
-    
+
     expect(current_path).to eq("/users/#{@user_1.id}")
     expect(us_p_1.host).to eq(true)
 
     visit "/users/#{@user_2.id}"
-    save_and_open_page
     expect(page).to have_content("Saltburn")
     expect(us_p_2.host).to eq(false)
     
   end
-
-
 end

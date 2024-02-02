@@ -8,36 +8,35 @@ RSpec.describe 'Viewing Party Create Page', type: :feature do
 
     @user_1 = User.create!(name: 'Isaac', email: 'isaac@email.com')
     @user_2 = User.create!(name: 'Jessie', email: 'jessie@email.com')
-    # @movie_1 = Movie.new(@salt_gen, @salt_cast, @salt_review)
   end
   it "has a new viewing parting page" do
 
-      stub_request(:get, "https://api.themoviedb.org/3/movie/930564?api_key=1311ab65df93d5e9a0eb12ab57bac784").
-         with(
-           headers: {
-          'Accept'=>'*/*',
-          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-          'User-Agent'=>'Faraday v2.9.0'
-           }).
-         to_return(status: 200, body: @salt_gen, headers: {})
+    stub_request(:get, "https://api.themoviedb.org/3/movie/930564?api_key=1311ab65df93d5e9a0eb12ab57bac784").
+      with(
+        headers: {
+      'Accept'=>'*/*',
+      'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+      'User-Agent'=>'Faraday v2.9.0'
+        }).
+      to_return(status: 200, body: @salt_gen, headers: {})
 
     stub_request(:get, "https://api.themoviedb.org/3/movie/930564/credits?api_key=1311ab65df93d5e9a0eb12ab57bac784").
-         with(
-           headers: {
-          'Accept'=>'*/*',
-          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-          'User-Agent'=>'Faraday v2.9.0'
-           }).
-         to_return(status: 200, body: @salt_cast, headers: {})
+      with(
+        headers: {
+      'Accept'=>'*/*',
+      'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+      'User-Agent'=>'Faraday v2.9.0'
+        }).
+      to_return(status: 200, body: @salt_cast, headers: {})
 
     stub_request(:get, "https://api.themoviedb.org/3/movie/930564/reviews?api_key=1311ab65df93d5e9a0eb12ab57bac784").
-         with(
-           headers: {
-          'Accept'=>'*/*',
-          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-          'User-Agent'=>'Faraday v2.9.0'
-           }).
-         to_return(status: 200, body: @salt_review, headers: {})
+      with(
+        headers: {
+      'Accept'=>'*/*',
+      'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+      'User-Agent'=>'Faraday v2.9.0'
+        }).
+      to_return(status: 200, body: @salt_review, headers: {})
 
     visit "/users/#{@user_1.id}/movies/930564/viewing_party/new"
 

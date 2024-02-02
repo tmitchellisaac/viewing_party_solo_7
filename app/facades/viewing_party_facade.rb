@@ -26,4 +26,14 @@ class ViewingPartyFacade
     end
   end
 
+  def where_buy
+    service = MovieService.new
+    service.watch(@movie_id)[:buy]
+  end
+
+  def where_rent
+    service = MovieService.new
+    service.watch(@movie_id)[:rent]
+  end
+
 end

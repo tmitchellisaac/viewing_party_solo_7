@@ -1,5 +1,10 @@
 class ViewingPartyController < ApplicationController
 
+  def show
+    @facade = ViewingPartyFacade.new(params)
+    @facade.where_buy
+  end
+
   def new
     @facade = ViewingPartyFacade.new(params)
   end
@@ -23,7 +28,6 @@ class ViewingPartyController < ApplicationController
 
   def strong_params
     params.permit(:duration, :date, :start_time, :movie_id)
-
   end
 
 end

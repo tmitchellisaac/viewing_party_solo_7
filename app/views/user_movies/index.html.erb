@@ -1,0 +1,9 @@
+
+
+  <% @facade.movies.each do |movie| %>
+    <p> Movie Title: <%= link_to movie[:title], "/users/#{@facade.user_id}/movies/#{movie[:id]}" %> </p>
+    <p> Rating: <%=  movie[:vote_average] %> </p> <br>
+  <% end %>
+
+
+<%= link_to "Discover Page", "/users/#{@facade.user_id}/discover" %>

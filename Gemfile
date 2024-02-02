@@ -54,9 +54,12 @@ gem "sassc-rails"
 # gem "image_processing", "~> 1.2"
 gem "shoulda-matchers"
 
+gem "faraday"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "pry"
+  gem 'figaro'
 end
 
 group :development do
@@ -68,7 +71,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-  gem "rubocop-rails"
+  
 end
 
 group :test do
@@ -76,4 +79,5 @@ group :test do
   gem "capybara"
   gem "launchy"
   gem "simplecov"
+  gem "webmock"
 end

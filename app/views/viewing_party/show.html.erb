@@ -1,0 +1,22 @@
+<h4> Viewing Party Show Page </h4>
+<p>(Buy/Rent data provided by the wonderful people at JustWatch)</p>
+
+<br>
+<section id="buy">
+<h1> Where to Buy: </h1>
+  <% @facade.where_buy.each do |provider|  %>
+    <ul>
+      <li> <%= image_tag("https://media.themoviedb.org/t/p/original/#{provider[:logo_path]}", width: '55px') %>
+    </ul>
+  <% end %>  
+</section>
+
+<section id="rent">
+<h1> Where to Rent: </h1>
+  <% @facade.where_rent.each do |provider|  %>
+    <ul>
+      <li> <%= image_tag("https://media.themoviedb.org/t/p/original/#{provider[:logo_path]}", width: '55px') %>
+    </ul>
+  <% end %> 
+</section>
+

@@ -6,7 +6,7 @@
   </h1>
   <%= form_with url: "/users/#{@facade.user_id}/movies/#{@facade.movie_id}/viewing_party", local: true do |f| %>
   <%= f.label "Duration:" %>
-  <%= f.number_field :duration, in: @facade.movie.runtime..1000, step: 1 %> minutes
+  <%= f.number_field :duration, in: @facade.movie.runtime_min..1000, step: 1 %> minutes
   <p>
     <%= f.label "Date:" %>
     <%= f.date_field :date %>

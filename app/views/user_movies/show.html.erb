@@ -1,22 +1,22 @@
-<h1> <%= @movie.title %> </h1>
-
+<h1> <%= @facade.movie.title %> </h1>
+"#{data.first[:runtime]/60} hours and #{data.first[:runtime] % 60} minutes"
 <section>
-  <h4> Rating:</h4><p><%= @movie.rating %>/10 </p>
-  <h4> Runtime: </h4><p><%= @movie.runtime %></p>
-  <h4> Genres: </h4> <p><% @movie.genres.each do |genre| %>
+  <h4> Rating:</h4><p><%= @facade.movie.rating %>/10 </p>
+  <h4> Runtime: </h4><p><%= "#{@facade.movie.runtime/60} hours and #{@facade.movie.runtime % 60} minutes" %></p>
+  <h4> Genres: </h4> <p><% @facade.movie.genres.each do |genre| %>
       <%= genre %>
     <% end %> </p>
-  <h4> Summary: </h4> <p> <%= @movie.description %> </p>
+  <h4> Summary: </h4> <p> <%= @facade.movie.description %> </p>
   <h4> Cast: </h4> 
-    <% @movie.cast.each do |actor, character| %>
+    <% @facade.movie.cast.each do |actor, character| %>
       <%= character %>
       played by <%= actor %> <br>
     <% end %>
   <br>
-  <h4> Number of Reviews: <%= @movie.review_count %> </h4>
+  <h4> Number of Reviews: <%= @facade.movie.review_count %> </h4>
   <br>
   <h4> Reviewer Information: </h4>
-    <p><% @movie.review_authors.each do |author| %> </p>
+    <p><% @facade.movie.review_authors.each do |author| %> </p>
       <p> <%= author.name %>
       <%= author.username %>,
       Rating: <%= author.rating %> </p>
@@ -24,6 +24,6 @@
 
 </section>
 
-<%= link_to "Discover Page", "/users/#{@user.id}/discover" %>
+<%= link_to "Discover Page", "/users/#{@facade.user_id}/discover" %>
 
-<%= link_to "Create Viewing Party", "/users/#{@user.id}/movies/#{@movie.id}/viewing-party/new" %>
+<%= link_to "Create Viewing Party", "/users/#{@facade.user_id}/movies/#{@facade.movie_id}/viewing-party/new" %>

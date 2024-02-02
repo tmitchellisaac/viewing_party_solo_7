@@ -1,26 +1,27 @@
 class UserMovieFacade
+  
+  attr_reader :user_id, :movie
 
-  def initialize(user_id)
-    @user_id = user_id
+  def initialize(params)
+    @params = params
+    @user_id = params[:user_id]
   end
 
   def movies
-    conn = Faraday.new(url: "https://api.themoviedb.org") do |faraday|
-      faraday.params["api_key"] = "1311ab65df93d5e9a0eb12ab57bac784"
+    service = MovieService.new
+    if @params[:q] == "top rated"
+      service.top_rated_movies
+    else
+      service.search_movies(@params[:q])
     end
-    
-    if params[:s]
-      response = conn.get("3/search/movie?query=#{params[:s]}")
-      json = JSON.parse(response.body, symbolize_names: true)
-      @search_results = json[:results]
-    else 
-    
-      response = conn.get("3/movie/top_rated")
-      json = JSON.parse(response.body, symbolize_names: true)
-      @top_rated = json[:results]
-    end  
-
-
   end
 
+  def movie_id
+    @params[:id]
+  end
+
+  def movie
+    service = MovieService.new
+    @movie = Movie.new(service.find_movie(movie_id))
+  end
 end

@@ -60,7 +60,7 @@ RSpec.describe 'Movies index page', type: :feature do
 
     visit "/users/#{@user_1.id}/discover"
     
-    fill_in :s, with: "God"
+    fill_in :q, with: "God"
     click_button "Search"
     expect(current_path).to eq("/users/#{@user_1.id}/movies")
     expect(page).to have_content("Godzilla Minus One")

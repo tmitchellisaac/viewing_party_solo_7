@@ -6,6 +6,7 @@ class UsersController < ApplicationController # rubocop:disable Style/Documentat
 
    def show
       @user = User.find(params[:id])
+      
    end
 
    def create
